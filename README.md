@@ -117,7 +117,7 @@ Similarly, character classes, such as `\d = {0,...,9}` are just an `or` over a s
 
 ## Graphical Interface
 
-In addition to our backend API (the engine), we also provide a user interface to interact with our matcher. The module `UI.elm` is a minimal bridge-point between the engine's Elm API and a JQuery-based HTML website. The latter records the user's input expressions and query strings and sends them over to the engine asking if there is a match. 
+In addition to our backend API (the engine), we also provide a [user interface](https://www.classes.cs.uchicago.edu/archive/2020/spring/22300-1/showcase/hazim/index.html) to interact with our matcher. The module `UI.elm` is a minimal bridge-point between the engine's Elm API and a JQuery-based HTML website. The latter records the user's input expressions and query strings and sends them over to the engine asking if there is a match. 
 
 The engine checks whether the _entire_ input string is matched, but we are also interested in partial matches. For this reason, the UI scripts dissect the query string into all the possible ordered substrings (`n²-n` substrings) and highlight any matching substrings. 
 
