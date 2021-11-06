@@ -1,11 +1,12 @@
 module Playground exposing (..)
 
+import Derivative as D
 import Desugar exposing (desugar)
 import Match as M
 import Parse exposing (parse)
 import RegExp as R
 import Scan exposing (scan)
-import Derivative as D
+
 
 exp r =
     case Result.andThen (\x -> Ok <| desugar x) <| (Result.andThen parse <| scan r) of
@@ -32,20 +33,10 @@ loop f a n =
         loop f a (n - 1)
 
 
-
-{-
-
-import Playground exposing(..)
-import RegExp as R
-import Scan as S
-import Parse as P
-import Derivative as D
-Result.andThen P.parse <| S.scan "exp"
-
--}
-
-nth r a n = 
+nth : R.RegExp -> Char -> Int -> R.RegExp
+nth r a n =
     if n == 0 then
         r
-    else 
-        nth (D.derive r [a]) a (n-1)
+
+    else
+        nth (D.derive r [ a ]) a (n - 1)
