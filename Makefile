@@ -1,2 +1,2 @@
 js:
-	@elm make src/UI.elm --output=src/ui/js/elm.js
+	@elm make src/UI.elm --optimize --output=src/ui/js/elm.js
