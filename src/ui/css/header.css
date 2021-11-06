@@ -1,0 +1,17 @@
+.header {
+    padding-bottom: 18px;
+}
+
+.header .title{
+    font-variant: small-caps;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.header span{
+    color: #74637f;
+}
+
+.header hr{
+    border-bottom: 12px solid #74637f;
+}

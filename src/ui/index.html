@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/errors.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src='js/main.js'></script>
+    <script src='js/lucky.js'></script>
+    <script src="js/elm.js"></script>
+</head>
+
+<body>
+    <div>
+        <div class="centered header">
+            <img src="img/closure.svg" width="70px">
+            <span class="title">Jare</span>
+            <span>Just another RegEx engine.</span>
+            <hr>
+        </div>
+        <div>
+            <div class="centered chars">
+                <span>Special characters: </span>
+                <button id="epsilonBtn" class="charBtn">ε</button>
+                <button id="phiBtn" class="charBtn">∅</button>
+            </div>
+            <div id="regexBox">
+                <div>
+                    <input placeholder="pattern" spellcheck="false" autocomplete="off" id="regex" />
+                    <img id="unoImg" alt="reverse" src="img/uno.png" />
+                </div>
+            </div>
+
+            <div id="errorsBox">
+                <button class="errorsBtn" id="errorsBtn">Show Errors</button>
+                <div id="errors">
+                    <p id="errorsContent" style="display: none;">Life's good.</p>
+                </div>
+            </div>
+            <div id="contentBox">
+                <div id="marksBox">
+                    <div id="marks"></div>
+                </div>
+                <textarea placeholder="Your text goes here"
+                    id="content">The quick brown fox jumped over the lazy dog 0123456789 times quickly and elegantly.</textarea>
+            </div>
+            <button id="luckyBtn">I'm feeling lucky</button>
+        </div>
+    </div>
+    <div id="elm"></div>
+    <script>
+        var app = Elm.UI.init({
+            node: document.getElementById('elm')
+        });
+
+        let $marksBox = $('#marksBox')
+        let $marker = $('#marks')
+        let $content = $('textarea')
+        let $regex = $('#regex')
+        let $luckyBtn = $('#luckyBtn')
+        let $randExpEngine = new RegExp()
+        let $errorsBtn = $('#errorsBtn');
+        let $errorsContent = $('#errorsContent');
+
+        let $epsilonBtn = $('#epsilonBtn');
+        let $phiBtn = $('#phiBtn');
+        let $unoImg = $('#unoImg');
+
+        app.ports.
+            matchResult.subscribe(applyRegex);
+
+        app.ports.
+            reverseResult.subscribe(handleReverse);
+
+        $(document).ready(function () {
+            bindHandlers()
+            handleInput()
+        })
+    </script>
+</body>
+
+</html>
